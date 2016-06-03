@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Query" xml:space="preserve">
+  <data name="ForecastQuery" xml:space="preserve">
     <value>select *,
 case 
 	when DaySupply &gt; 90 then 1
@@ -150,5 +150,16 @@ from
 		   having count(1) &gt; 3
 	) as Data
 ) CalculatedData</value>
+  </data>
+  <data name="SalesHistoryQuery" xml:space="preserve">
+    <value>select 
+	datepart(m,DmsSoldDate) Month ,count(0) as Quantity 
+from dmsd.Deals d
+join dmsd.Vehicles v on v.LoopVehicleId = d.LoopVehicleId
+where 
+	v.VehicleMake = @VehicleMake
+and
+	v.VehicleModel = @VehicleModel
+group by datepart(m,DmsSoldDate)</value>
   </data>
 </root>

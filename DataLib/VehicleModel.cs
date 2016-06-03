@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 
 namespace DataLib
 {
+    public class SalesHistoryModel
+    {
+        public int Month { get; set; }
+        public int Quantity { get; set; }
+
+    }
+
     public class VehicleForecastModel
     {
         public string VehicleMake { get; set; }

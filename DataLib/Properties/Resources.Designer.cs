@@ -80,9 +80,26 @@ namespace DataLib.Properties {
         ///				  select count(1) 
         ///				  from dmsd.VehicleInventory  [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Query {
+        internal static string ForecastQuery {
             get {
-                return ResourceManager.GetString("Query", resourceCulture);
+                return ResourceManager.GetString("ForecastQuery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to select 
+        ///	datepart(m,DmsSoldDate) Month ,count(0) as Quantity 
+        ///from dmsd.Deals d
+        ///join dmsd.Vehicles v on v.LoopVehicleId = d.LoopVehicleId
+        ///where 
+        ///	v.VehicleMake = @VehicleMake
+        ///and
+        ///	v.VehicleModel = @VehicleModel
+        ///group by datepart(m,DmsSoldDate).
+        /// </summary>
+        internal static string SalesHistoryQuery {
+            get {
+                return ResourceManager.GetString("SalesHistoryQuery", resourceCulture);
             }
         }
     }

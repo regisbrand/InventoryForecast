@@ -11,21 +11,25 @@ namespace InventoryForecast.Controllers
 {
     public class InventoryController : Controller
     {
+        public HttpClient GetHttpClient()
+        {
+            var client = new HttpClient();
+            client.BaseAddress = new Uri("http://localhost:56627/");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            return client;
+        }
+
         // GET: Inventory
         public async System.Threading.Tasks.Task<ActionResult> InventoryView()
         {
-            using (var client = new HttpClient())
+            using (var client = GetHttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost:56627/");
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
                 // New code:
                 HttpResponseMessage response = await client.GetAsync("api/default/");
                 if (response.IsSuccessStatusCode)
                 {
                     var data = await response.Content.ReadAsAsync<IEnumerable<Models.VehicleForecastModel>>();
-                    Debug.WriteLine("{0}", data.ElementAt(0).VehicleMake);
                     return View(data);
                 }
 
@@ -33,10 +37,24 @@ namespace InventoryForecast.Controllers
             }
         }
 
-        // GET: Inventory/Details/5
-        public ActionResult Details(int id)
+        // GET: Inventory/Details/make/model
+        [Route("/{make}/{model}")]
+
+        public async System.Threading.Tasks.Task<ActionResult> Details(string make, string model)
         {
-            return View();
+            using (var client = GetHttpClient())
+            {
+                // New code:
+                HttpResponseMessage response = await client.GetAsync(
+                    string.Format("api/default/{0}/{1}/", make, model));
+                if (response.IsSuccessStatusCode)
+                {
+                    var data = await response.Content.ReadAsAsync<IEnumerable<Models.SalesHistoryModel>>();
+                    return View(data);
+                }
+
+                return View();
+            }
         }
 
         // GET: Inventory/Create
