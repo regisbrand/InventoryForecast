@@ -4,13 +4,12 @@
     ViewBag.Title = "InventoryView";
 }
 
-<h2>InventoryView</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h2>Inventory Forecast</h2>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Indicator)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.VehicleMake)
         </th>
@@ -36,6 +35,9 @@
     {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.Indicator)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.VehicleMake)
             </td>
             <td>
@@ -54,9 +56,6 @@
                 @Html.DisplayFor(modelItem => item.DaySupply)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>
     }

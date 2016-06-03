@@ -118,29 +118,37 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Query" xml:space="preserve">
-    <value>select 
-*, 
-CASE WHEN Data.Sold - Data.Inventory &lt; 0 THEN 0 
-ELSE Data.Sold - Data.Inventory END as OrderQuantity,
-CONVERT(INT, (CONVERT(DECIMAL(10,2),Data.Inventory) / CONVERT(DECIMAL(10,2),Data.Sold) * 90.00)) DaySupply
-from
+    <value>select *,
+case 
+	when DaySupply &gt; 90 then 1
+	when DaySupply between 45 and 90 then 2
+	when DaySupply &lt; 45 then 3 end as Indicator
+from 
 (
-       select v.VehicleMake, v.VehicleModel, count(1) Sold,
-       (
-              select count(1) 
-              from dmsd.VehicleInventory vi 
-              where 
-                     vi.VehicleMake = v.VehicleMake 
-                     and 
-                     vi.VehicleModel = v.VehicleModel
-                     and
-                     vi.NewUsedType = 'New'
-       ) Inventory
-       from dmsd.Deals d
-       join dmsd.Vehicles v on v.LoopVehicleId = d.LoopVehicleId
-       where d.NewUsedTypeId = 2
-       group by v.VehicleMake, v.VehicleModel
-       having count(1) &gt; 3
-) as Data</value>
+	select 
+	*, 
+	case when Data.Sold - Data.Inventory &lt; 0 THEN 0 
+	else Data.Sold - Data.Inventory END as OrderQuantity,
+	convert(int, (convert(decimal(10,2),Data.Inventory) / convert(decimal(10,2),Data.Sold) * 90.00)) DaySupply
+	from
+	(
+		   select v.VehicleMake, v.VehicleModel, count(1) Sold,
+		   (
+				  select count(1) 
+				  from dmsd.VehicleInventory vi 
+				  where 
+						 vi.VehicleMake = v.VehicleMake 
+						 and 
+						 vi.VehicleModel = v.VehicleModel
+						 and
+						 vi.NewUsedType = 'New'
+		   ) Inventory
+		   from dmsd.Deals d
+		   join dmsd.Vehicles v on v.LoopVehicleId = d.LoopVehicleId
+		   where d.NewUsedTypeId = 2
+		   group by v.VehicleMake, v.VehicleModel
+		   having count(1) &gt; 3
+	) as Data
+) CalculatedData</value>
   </data>
 </root>

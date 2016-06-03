@@ -14,6 +14,7 @@ namespace InventoryForecast.Models
         public int Inventory { get; set; }
         public int OrderQuantity { get; set; }
         public int DaySupply { get; set; }
+        public byte Indicator { get; set; }
 
     }
 }

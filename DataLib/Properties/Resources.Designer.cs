@@ -61,21 +61,24 @@ namespace DataLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to select 
-        ///*, 
-        ///CASE WHEN Data.Sold - Data.Inventory &lt; 0 THEN 0 
-        ///ELSE Data.Sold - Data.Inventory END as OrderQuantity,
-        ///CONVERT(INT, (CONVERT(DECIMAL(10,2),Data.Inventory) / CONVERT(DECIMAL(10,2),Data.Sold) * 90.00)) DaySupply
-        ///from
+        ///   Looks up a localized string similar to select *,
+        ///case 
+        ///	when DaySupply &gt; 90 then 1
+        ///	when DaySupply between 45 and 90 then 2
+        ///	when DaySupply &lt; 45 then 3 end as Indicator
+        ///from 
         ///(
-        ///       select v.VehicleMake, v.VehicleModel, count(1) Sold,
-        ///       (
-        ///              select count(1) 
-        ///              from dmsd.VehicleInventory vi 
-        ///              where 
-        ///                     vi.VehicleMake = v.VehicleMake 
-        ///                     and 
-        ///                     vi. [rest of string was truncated]&quot;;.
+        ///	select 
+        ///	*, 
+        ///	case when Data.Sold - Data.Inventory &lt; 0 THEN 0 
+        ///	else Data.Sold - Data.Inventory END as OrderQuantity,
+        ///	convert(int, (convert(decimal(10,2),Data.Inventory) / convert(decimal(10,2),Data.Sold) * 90.00)) DaySupply
+        ///	from
+        ///	(
+        ///		   select v.VehicleMake, v.VehicleModel, count(1) Sold,
+        ///		   (
+        ///				  select count(1) 
+        ///				  from dmsd.VehicleInventory  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Query {
             get {
