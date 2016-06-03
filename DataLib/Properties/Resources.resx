@@ -120,7 +120,8 @@
   <data name="Query" xml:space="preserve">
     <value>select 
 *, 
-Data.Sold - Data.Inventory as OrderQuantity,
+CASE WHEN Data.Sold - Data.Inventory &lt; 0 THEN 0 
+ELSE Data.Sold - Data.Inventory END as OrderQuantity,
 CONVERT(INT, (CONVERT(DECIMAL(10,2),Data.Inventory) / CONVERT(DECIMAL(10,2),Data.Sold) * 90.00)) DaySupply
 from
 (
@@ -139,7 +140,7 @@ from
        join dmsd.Vehicles v on v.LoopVehicleId = d.LoopVehicleId
        where d.NewUsedTypeId = 2
        group by v.VehicleMake, v.VehicleModel
-       having count(1) &gt; 10
+       having count(1) &gt; 3
 ) as Data</value>
   </data>
 </root>

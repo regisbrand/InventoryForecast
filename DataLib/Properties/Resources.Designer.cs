@@ -63,7 +63,8 @@ namespace DataLib.Properties {
         /// <summary>
         ///   Looks up a localized string similar to select 
         ///*, 
-        ///Data.Sold - Data.Inventory as OrderQuantity,
+        ///CASE WHEN Data.Sold - Data.Inventory &lt; 0 THEN 0 
+        ///ELSE Data.Sold - Data.Inventory END as OrderQuantity,
         ///CONVERT(INT, (CONVERT(DECIMAL(10,2),Data.Inventory) / CONVERT(DECIMAL(10,2),Data.Sold) * 90.00)) DaySupply
         ///from
         ///(
@@ -74,9 +75,7 @@ namespace DataLib.Properties {
         ///              where 
         ///                     vi.VehicleMake = v.VehicleMake 
         ///                     and 
-        ///                     vi.VehicleModel = v.VehicleModel
-        ///                     and
-        ///   [rest of string was truncated]&quot;;.
+        ///                     vi. [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Query {
             get {
