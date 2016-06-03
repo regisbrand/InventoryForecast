@@ -120,7 +120,7 @@
   <data name="Query" xml:space="preserve">
     <value>select 
 *, 
-Data.Sold - Data.Inventory as OrderQuanity,
+Data.Sold - Data.Inventory as OrderQuantity,
 CONVERT(INT, (CONVERT(DECIMAL(10,2),Data.Inventory) / CONVERT(DECIMAL(10,2),Data.Sold) * 90.00)) DaySupply
 from
 (
