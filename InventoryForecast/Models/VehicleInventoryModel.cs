@@ -24,4 +24,34 @@ namespace InventoryForecast.Models
         public byte Indicator { get; set; }
 
     }
+
+    public class SalesHistoryModelGrouped
+    {
+        public int Month { get; set; }
+        public int Quantity { get; set; }
+
+    }
+
+    public class TotalVehiclesInStock
+    {
+       
+        public int TotalInStock { get; set; }
+
+    }
+
+
+    public class TotalValueOfVehiclesInStock
+    {
+
+        public int TotalValueOfVehicles { get; set; }
+
+    }
+
+
+    public class TotalStockDaysLasting
+    {
+
+        public int StockDaysLasting { get; set; }
+
+    }
 }

@@ -102,5 +102,65 @@ namespace DataLib.Properties {
                 return ResourceManager.GetString("SalesHistoryQuery", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///SELECT count(*)/( SELECT count(*)/90.00  as StockDaysLasting
+        ///					FROM dsmd.deals
+        ///					where NewUsedTypeId = 2 and DmsSoldDate&gt; &apos;2016-03-03&apos; ) 
+        ///FROM [CARDB].[dbo].[VehicleInventory] where  NewUsedType = &apos;New&apos;.
+        /// </summary>
+        internal static string StockDaysLasting {
+            get {
+                return ResourceManager.GetString("StockDaysLasting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///SELECT count(*)  as TotalInStock FROM dmsd.VehicleInventory where  NewUsedType = &apos;New&apos;.
+        /// </summary>
+        internal static string TotalInStock {
+            get {
+                return ResourceManager.GetString("TotalInStock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///      select 
+        ///	datepart(m,DmsSoldDate) Month ,count(0) as Quantity 
+        ///from dmsd.Deals d
+        ///join dmsd.Vehicles v on v.LoopVehicleId = d.LoopVehicleId
+        ///where 
+        ///	v.VehicleModel = @VehicleModel
+        ///group by datepart(m,DmsSoldDate)
+        ///.
+        /// </summary>
+        internal static string TotalSelledByMonthGrouped {
+            get {
+                return ResourceManager.GetString("TotalSelledByMonthGrouped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT sum(dealercost) as TotalValueOfVehicles  FROM dmsd.VehicleInventory where  NewUsedType = &apos;New&apos;.
+        /// </summary>
+        internal static string TotalValueOfVehicles {
+            get {
+                return ResourceManager.GetString("TotalValueOfVehicles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///SELECT sum(dealercost)/count(dealercost) as VehicleAverageValue FROM dmsd.VehicleInventory where  NewUsedType = &apos;New&apos;
+        ///.
+        /// </summary>
+        internal static string VehicleAverageValue {
+            get {
+                return ResourceManager.GetString("VehicleAverageValue", resourceCulture);
+            }
+        }
     }
 }

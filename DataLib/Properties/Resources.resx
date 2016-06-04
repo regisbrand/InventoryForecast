@@ -162,4 +162,32 @@ and
 	v.VehicleModel = @VehicleModel
 group by datepart(m,DmsSoldDate)</value>
   </data>
+ <data name="TotalInStock" xml:space="preserve">
+    <value>
+SELECT count(*)  as TotalInStock FROM dmsd.VehicleInventory where  NewUsedType = 'New'</value>
+  </data>
+<data name="TotalValueOfVehicles" xml:space="preserve">
+    <value>SELECT sum(dealercost) as TotalValueOfVehicles  FROM dmsd.VehicleInventory where  NewUsedType = 'New'</value> </data>
+<data name="VehicleAverageValue" xml:space="preserve">
+    <value>
+SELECT sum(dealercost)/count(dealercost) as VehicleAverageValue FROM dmsd.VehicleInventory where  NewUsedType = 'New'
+</value>
+  </data>
+<data name="StockDaysLasting" xml:space="preserve">
+    <value>
+SELECT count(*)/( SELECT count(*)/90.00  as StockDaysLasting
+					FROM dsmd.deals
+					where NewUsedTypeId = 2 and DmsSoldDate> '2016-03-03' ) 
+FROM [CARDB].[dbo].[VehicleInventory] where  NewUsedType = 'New'</value>  </data>
+<data name="TotalSelledByMonthGrouped" xml:space="preserve">
+    <value>
+      select 
+	datepart(m,DmsSoldDate) Month ,count(0) as Quantity 
+from dmsd.Deals d
+join dmsd.Vehicles v on v.LoopVehicleId = d.LoopVehicleId
+where 
+	v.VehicleModel = @VehicleModel
+group by datepart(m,DmsSoldDate)
+</value>
+  </data>
 </root>
