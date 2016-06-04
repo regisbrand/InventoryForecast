@@ -127,7 +127,8 @@ namespace DataLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 
+        ///   Looks up a localized string similar to SELECT cASE WHEN MONTH &amp; 7 THEN CONVERT(DATETIME,&apos;2016-&apos; +CONVERT(VARCHAR(2), Month) + &apos;-01&apos;) ELSE  CONVERT(DATETIME,&apos;2015-&apos; +CONVERT(VARCHAR(2), Month) + &apos;-01&apos;) END Date ,Quantity FROM (
+        /// 
         ///      select 
         ///	datepart(m,DmsSoldDate) Month ,count(0) as Quantity 
         ///from dmsd.Deals d
@@ -135,7 +136,7 @@ namespace DataLib.Properties {
         ///where 
         ///	v.VehicleModel = @VehicleModel
         ///group by datepart(m,DmsSoldDate)
-        ///.
+        ///                          ) A order by date.
         /// </summary>
         internal static string TotalSelledByMonthGrouped {
             get {

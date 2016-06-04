@@ -18,3 +18,13 @@ C:\Users\Tiago\Desktop\InventoryForecast\InventoryForecast\DataLib\obj\Debug\Dat
 C:\Users\Tiago\Desktop\InventoryForecast\InventoryForecast\DataLib\obj\Debug\DataLib.csproj.GenerateResource.Cache
 C:\Users\Tiago\Desktop\InventoryForecast\InventoryForecast\DataLib\obj\Debug\DataLib.dll
 C:\Users\Tiago\Desktop\InventoryForecast\InventoryForecast\DataLib\obj\Debug\DataLib.pdb
+C:\InventoryForecast\InventoryForecast\DataLib\obj\Debug\DataLib.csprojResolveAssemblyReference.cache
+C:\InventoryForecast\InventoryForecast\DataLib\obj\Debug\DataLib.Properties.Resources.resources
+C:\InventoryForecast\InventoryForecast\DataLib\obj\Debug\DataLib.csproj.GenerateResource.Cache
+C:\InventoryForecast\InventoryForecast\DataLib\obj\Debug\DataLib.dll
+C:\InventoryForecast\InventoryForecast\DataLib\obj\Debug\DataLib.pdb
+C:\InventoryForecast\InventoryForecast\DataLib\bin\Debug\DataLib.dll
+C:\InventoryForecast\InventoryForecast\DataLib\bin\Debug\DataLib.pdb
+C:\InventoryForecast\InventoryForecast\DataLib\bin\Debug\Dapper.dll
+C:\InventoryForecast\InventoryForecast\DataLib\bin\Debug\Dapper.pdb
+C:\InventoryForecast\InventoryForecast\DataLib\bin\Debug\Dapper.xml
