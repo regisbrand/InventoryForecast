@@ -1,0 +1,6 @@
+framework module Pods_ProspectAnalyzer {
+  umbrella header "Pods-ProspectAnalyzer-umbrella.h"
+
+  export *
+  module * { export * }
+}

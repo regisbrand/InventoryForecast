@@ -1,0 +1,13 @@
+PODS:
+  - Alamofire (3.4.0)
+  - KYCircularProgress (0.5.1)
+
+DEPENDENCIES:
+  - Alamofire (~> 3.4)
+  - KYCircularProgress
+
+SPEC CHECKSUMS:
+  Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
+  KYCircularProgress: 69a6d6852d96ca2be2830cc659b85aab3bb1cee6
+
+COCOAPODS: 0.38.2
