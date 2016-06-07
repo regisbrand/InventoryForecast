@@ -1,0 +1,212 @@
+﻿@{
+    ViewBag.Title = "Dashbard v.2";
+}
+
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Vehicles</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">1181</h1>
+                    <div class="stat-percent font-bold text-success">&nbsp;</div>
+                    <small>Total vehicles in the inventory</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Investment</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">$ 40,909,134</h1>
+                    <div class="stat-percent font-bold text-info">&nbsp;</div>
+                    <small>Inventory valuation</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Average Price</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">$ 37,878</h1>
+                    <div class="stat-percent font-bold text-navy">&nbsp;</div>
+                    <small>Average vehicle price</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Turnover</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">10</h1>
+                    <div class="stat-percent font-bold text-success">&nbsp;</div>
+                    <small>Stock turnover rate</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Inventory History</h5>
+                    <div class="pull-right">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-xs btn-white">Today</button>
+                            <button type="button" class="btn btn-xs btn-white active">Monthly</button>
+                            <button type="button" class="btn btn-xs btn-white">Annual</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="ibox-content">
+                                <div id="morris-one-line-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="small-chat-box fadeInRight animated">
+
+    <div class="heading" draggable="true">
+        <small class="chat-date pull-right">
+            02.19.2015
+        </small>
+        Small chat
+    </div>
+
+    <div class="content">
+
+        <div class="left">
+            <div class="author-name">
+                Monica Jackson <small class="chat-date">
+                    10:02 am
+                </small>
+            </div>
+            <div class="chat-message active">
+                Lorem Ipsum is simply dummy text input.
+            </div>
+
+        </div>
+        <div class="right">
+            <div class="author-name">
+                Mick Smith
+                <small class="chat-date">
+                    11:24 am
+                </small>
+            </div>
+            <div class="chat-message">
+                Lorem Ipsum is simpl.
+            </div>
+        </div>
+        <div class="left">
+            <div class="author-name">
+                Alice Novak
+                <small class="chat-date">
+                    08:45 pm
+                </small>
+            </div>
+            <div class="chat-message active">
+                Check this stock char.
+            </div>
+        </div>
+        <div class="right">
+            <div class="author-name">
+                Anna Lamson
+                <small class="chat-date">
+                    11:24 am
+                </small>
+            </div>
+            <div class="chat-message">
+                The standard chunk of Lorem Ipsum
+            </div>
+        </div>
+        <div class="left">
+            <div class="author-name">
+                Mick Lane
+                <small class="chat-date">
+                    08:45 pm
+                </small>
+            </div>
+            <div class="chat-message active">
+                I belive that. Lorem Ipsum is simply dummy text.
+            </div>
+        </div>
+
+
+    </div>
+    <div class="form-chat">
+        <div class="input-group input-group-sm">
+            <input type="text" class="form-control"> <span class="input-group-btn">
+                <button class="btn btn-primary" type="button">
+                    Send
+                </button>
+            </span>
+        </div>
+    </div>
+
+</div>
+<div id="small-chat">
+
+    <span class="badge badge-warning pull-right">5</span>
+    <a class="open-small-chat">
+        <i class="fa fa-comments"></i>
+
+    </a>
+</div>
+
+@section Styles {
+    @Styles.Render("~/plugins/morrisStyles")
+}    
+
+@section Scripts {
+    @Scripts.Render("~/plugins/flot")
+    @Scripts.Render("~/plugins/vectorMap")
+    @Scripts.Render("~/plugins/morris")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            Morris.Line({
+                element: 'morris-one-line-chart',
+                data: [
+                { month: '2015-7', value: 60 },
+                { month: '2015-8', value: 74},
+                { month: '2015-9', value: 32},
+                { month: '2015-10', value: 26},
+                { month: '2015-11', value: 17},
+                { month: '2015-12', value: 18},
+                { month: '2016-1', value: 11},
+                { month: '2016-2', value: 19},
+                { month: '2016-3', value: 26},
+                { month: '2016-4', value: 14},
+                { month: '2016-5', value: 25},
+                { month: '2016-6', value: 56}
+                ],
+                xkey: 'month',
+                ykeys: ['value'],
+                resize: true,
+                lineWidth: 4,
+                labels: ['Value'],
+                lineColors: ['#1ab394'],
+                pointSize: 5,
+            });
+
+        });
+    </script>
+}

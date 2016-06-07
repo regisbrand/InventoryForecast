@@ -22,8 +22,39 @@ namespace DataLib
         public int Inventory { get; set; }
         public int OrderQuantity { get; set; }
         public int DaySupply { get; set; }
+        public int Interests { get; set; }
         public byte Indicator { get; set; }
-
+        public string Status
+        {
+            get
+            {
+                switch(Indicator)
+                {
+                    case 1:
+                        return "Stock Available";
+                    case 2:
+                        return "Attention";
+                    default:
+                        return " Out of Stock ";
+                }
+            }
+        }
+        public string StatusLabel
+        {
+            get
+            {
+                switch (Indicator)
+                {
+                    case 1:
+                        return "label-primary";
+                    case 2:
+                        return "label-warning";
+                    default:
+                        return "label-danger";
+                }
+            }
+        }
+        public IEnumerable<int> SalesHistory { get; set; }
 
     }
 

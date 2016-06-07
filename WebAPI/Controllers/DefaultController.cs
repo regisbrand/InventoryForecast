@@ -13,7 +13,14 @@ namespace WebAPI.Controllers
         public IEnumerable<DataLib.VehicleForecastModel> Get()
         {
             var repo = new DataLib.Repository();
-            return repo.GetForecastData();
+            var data = repo.GetForecastData();
+            foreach(var item in data)
+            {
+                item.SalesHistory = this.Get(item.VehicleMake, item.VehicleModel)
+                    .Select(sh => sh.Quantity);
+                item.Interests = (item.Sold * 30) / 100;
+            }
+            return data;
         }
 
         [Route("{make}/{model}/")]

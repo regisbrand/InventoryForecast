@@ -87,15 +87,27 @@ namespace DataLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to select 
-        ///	datepart(m,DmsSoldDate) Month ,count(0) as Quantity 
-        ///from dmsd.Deals d
-        ///join dmsd.Vehicles v on v.LoopVehicleId = d.LoopVehicleId
-        ///where 
-        ///	v.VehicleMake = @VehicleMake
-        ///and
-        ///	v.VehicleModel = @VehicleModel
-        ///group by datepart(m,DmsSoldDate).
+        ///   Looks up a localized string similar to declare @table table (M int);
+        ///insert @table values (1);
+        ///insert @table values (2);
+        ///insert @table values (3);
+        ///insert @table values (4);
+        ///insert @table values (5);
+        ///insert @table values (6);
+        ///insert @table values (7);
+        ///insert @table values (8);
+        ///insert @table values (9);
+        ///insert @table values (10);
+        ///insert @table values (11);
+        ///insert @table values (12);
+        ///
+        ///select data.Month, max(quantity) Quantity
+        ///from
+        ///(
+        ///	select 
+        ///		datepart(m,DmsSoldDate) Month ,count(0) as Quantity 
+        ///	from dmsd.Deals d
+        ///	join dmsd.Veh [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SalesHistoryQuery {
             get {
@@ -127,16 +139,14 @@ namespace DataLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT cASE WHEN MONTH &amp; 7 THEN CONVERT(DATETIME,&apos;2016-&apos; +CONVERT(VARCHAR(2), Month) + &apos;-01&apos;) ELSE  CONVERT(DATETIME,&apos;2015-&apos; +CONVERT(VARCHAR(2), Month) + &apos;-01&apos;) END Date ,Quantity FROM (
+        ///   Looks up a localized string similar to SELECT CASE WHEN MONTH &lt; 7 THEN CONVERT(DATETIME,&apos;2016-&apos; +CONVERT(VARCHAR(2), Month) + &apos;-01&apos;) ELSE  CONVERT(DATETIME,&apos;2015-&apos; +CONVERT(VARCHAR(2), Month) + &apos;-01&apos;) END Date ,Quantity FROM (
         /// 
         ///      select 
         ///	datepart(m,DmsSoldDate) Month ,count(0) as Quantity 
         ///from dmsd.Deals d
         ///join dmsd.Vehicles v on v.LoopVehicleId = d.LoopVehicleId
-        ///where 
-        ///	v.VehicleModel = @VehicleModel
         ///group by datepart(m,DmsSoldDate)
-        ///                          ) A order by date.
+        ///) A order by date.
         /// </summary>
         internal static string TotalSelledByMonthGrouped {
             get {

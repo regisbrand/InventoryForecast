@@ -149,18 +149,40 @@ from
 		   group by v.VehicleMake, v.VehicleModel
 		   having count(1) &gt; 3
 	) as Data
-) CalculatedData</value>
+) CalculatedData
+order by Indicator desc</value>
   </data>
   <data name="SalesHistoryQuery" xml:space="preserve">
-    <value>select 
-	datepart(m,DmsSoldDate) Month ,count(0) as Quantity 
-from dmsd.Deals d
-join dmsd.Vehicles v on v.LoopVehicleId = d.LoopVehicleId
-where 
-	v.VehicleMake = @VehicleMake
-and
-	v.VehicleModel = @VehicleModel
-group by datepart(m,DmsSoldDate)</value>
+    <value>declare @table table (M int);
+insert @table values (1);
+insert @table values (2);
+insert @table values (3);
+insert @table values (4);
+insert @table values (5);
+insert @table values (6);
+insert @table values (7);
+insert @table values (8);
+insert @table values (9);
+insert @table values (10);
+insert @table values (11);
+insert @table values (12);
+
+select data.Month, max(quantity) Quantity
+from
+(
+	select 
+		datepart(m,DmsSoldDate) Month ,count(0) as Quantity 
+	from dmsd.Deals d
+	join dmsd.Vehicles v on v.LoopVehicleId = d.LoopVehicleId
+	where 
+		v.VehicleMake = @VehicleMake
+	and
+		v.VehicleModel = @VehicleModel
+	group by datepart(m,DmsSoldDate)
+	union all
+	select M, 0 from @table
+) data
+group by data.Month</value>
   </data>
   <data name="TotalInStock" xml:space="preserve">
     <value>
@@ -182,15 +204,13 @@ SELECT count(*)/( SELECT count(*)/90.00  as StockDaysLasting
 FROM [CARDB].[dbo].[VehicleInventory] where  NewUsedType = 'New'</value>
   </data>
   <data name="TotalSelledByMonthGrouped" xml:space="preserve">
-    <value>SELECT cASE WHEN MONTH &amp; 7 THEN CONVERT(DATETIME,'2016-' +CONVERT(VARCHAR(2), Month) + '-01') ELSE  CONVERT(DATETIME,'2015-' +CONVERT(VARCHAR(2), Month) + '-01') END Date ,Quantity FROM (
+    <value>SELECT CASE WHEN MONTH &lt; 7 THEN CONVERT(DATETIME,'2016-' +CONVERT(VARCHAR(2), Month) + '-01') ELSE  CONVERT(DATETIME,'2015-' +CONVERT(VARCHAR(2), Month) + '-01') END Date ,Quantity FROM (
  
       select 
 	datepart(m,DmsSoldDate) Month ,count(0) as Quantity 
 from dmsd.Deals d
 join dmsd.Vehicles v on v.LoopVehicleId = d.LoopVehicleId
-where 
-	v.VehicleModel = @VehicleModel
 group by datepart(m,DmsSoldDate)
-                          ) A order by date</value>
+) A order by date</value>
   </data>
 </root>

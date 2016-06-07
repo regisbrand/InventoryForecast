@@ -1,0 +1,2 @@
+C:\Users\Tiago\Desktop\InventoryForecast\InventoryForecast\InventoryTracker\Inspinia_MVC5\obj\Debug\InventoryTracking.csprojResolveAssemblyReference.cache
+C:\Users\Tiago\Desktop\InventoryForecast\InventoryForecast\InventoryTracker\Inspinia_MVC5\obj\Debug\Inspinia_MVC5.dll

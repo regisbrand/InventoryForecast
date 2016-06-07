@@ -148,3 +148,4 @@ C:\InventoryForecast\InventoryForecast\InventoryForecast\bin\Microsoft.Owin.Secu
 C:\InventoryForecast\InventoryForecast\InventoryForecast\obj\Debug\InventoryForecast.csprojResolveAssemblyReference.cache
 C:\InventoryForecast\InventoryForecast\InventoryForecast\obj\Debug\InventoryForecast.dll
 C:\InventoryForecast\InventoryForecast\InventoryForecast\obj\Debug\InventoryForecast.pdb
+C:\Users\Tiago\Desktop\InventoryForecast\InventoryForecast\InventoryForecast\bin\pl\System.Web.Optimization.resources.dll
